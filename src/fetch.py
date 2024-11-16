@@ -11,10 +11,10 @@ import hashlib
 import json
 import linecache
 import os
-import random
 import struct
 import string
 import sys
+import secrets
 
 try:
     from urllib.request import Request, HTTPError, urlopen
@@ -61,7 +61,7 @@ def run_query(url, headers, post=None, raw=False):
 
 
 def generate_id(id_type, id_value=None):
-    return id_value or ''.join(random.choices(string.hexdigits[:16].upper(), k=id_type))
+    return id_value or ''.join(secrets.SystemRandom().choices(string.hexdigits[:16].upper(), k=id_type))
 
 
 def product_mlb(mlb):
